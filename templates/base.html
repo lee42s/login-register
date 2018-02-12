@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>home</title>
+    </head>
+    </html>
+    <body>
+        <a href="/">홈</a>
+        <p>안녕하세요.클래스형 뷰에서 보내드립니다.</p>
+            {% if user.is_authenticated %}
+                {{ user.username }}님 안녕하세요.
+            <a href="{% url 'password_change' %}">비밀번호 변경</a>
+            <a href="{% url 'logout' %}">로그아웃</a>
+            {% else %}
+                <a href="{% url 'login' %}">로그인</a>
+                <a href="{% url 'register' %}">회원가입</a>
+            {% endif %}
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
